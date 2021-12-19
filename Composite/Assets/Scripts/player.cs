@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float force = 20f;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (Input.GetKey(KeyCode.A))
+            rb.AddForce(Vector3.left * force);
+        if (Input.GetKey(KeyCode.D))
+            rb.AddForce(Vector3.right * force);
+        if (Input.GetKey(KeyCode.W))
+            rb.AddForce(Vector3.forward * force);
+        if (Input.GetKey(KeyCode.S))
+            rb.AddForce(Vector3.back * force);
     }
 }
